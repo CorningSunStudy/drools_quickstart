@@ -2,6 +2,7 @@ package com.corning.drools.entity;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.drools.core.base.RuleNameEqualsAgendaFilter;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -72,6 +73,30 @@ public class ComparisonOperatorTest {
 
         /*
         comparison_operator_matches occur
+        comparison_operator_matches2 occur
          */
     }
+
+    @Test
+    public void fireAllRules() {
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
+        KieSession kieSession = kieClasspathContainer.newKieSession();
+
+        ComparisonOperatorEntity fact = new ComparisonOperatorEntity();
+        String zhangSan = "WangWu";
+
+        fact.setNames(zhangSan);
+        fact.setList(Lists.newArrayList(zhangSan));
+
+        kieSession.insert(fact);
+        // 规则过滤
+        kieSession.fireAllRules(new RuleNameEqualsAgendaFilter("comparison_operator_matches2"));
+        kieSession.dispose();
+
+        /*
+        comparison_operator_matches2 occur
+         */
+    }
+
 }

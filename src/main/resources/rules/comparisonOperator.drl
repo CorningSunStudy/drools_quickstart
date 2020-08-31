@@ -28,3 +28,11 @@ rule "comparison_operator_matches"
     then
         System.out.printf("comparison_operator_matches occur%n");
 end
+
+// matches
+rule "comparison_operator_matches2"
+    when
+        ComparisonOperatorEntity(names matches "Wang.*")
+    then
+        System.out.printf("comparison_operator_matches2 occur%n");
+end
