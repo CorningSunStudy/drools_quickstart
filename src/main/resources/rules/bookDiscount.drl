@@ -15,10 +15,11 @@ end
 //[100, 200)，优惠20
 rule "bookDiscount_2"
     when
-        $order:Order(originalPrice >= 100 && originalPrice < 200)
+        $order:Order($op:originalPrice >= 100 && originalPrice < 200)
     then
+        System.out.printf("bookDiscount_2, $op=%s%n", $op);
         $order.setRealPrice($order.getOriginalPrice() - 20);
-        System.out.printf("bookDiscount_2, %s%n", $order);
+        System.out.printf("bookDiscount_2, $order=%s%n", $order);
 end
 
 //[200, 300)，优惠50

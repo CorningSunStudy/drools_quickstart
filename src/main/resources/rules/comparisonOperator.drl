@@ -1,0 +1,30 @@
+package rules.ComparisonOperator;
+import com.corning.drools.entity.ComparisonOperatorEntity;
+
+dialect  "mvel"
+
+// contains
+rule "comparison_operator_contains"
+    when
+        ComparisonOperatorEntity(names contains "ZhangSan")
+        ComparisonOperatorEntity(list contains names)
+    then
+        System.out.printf("comparison_operator_contains occur%n");
+end
+
+// memberOf
+rule "comparison_operator_memberOf"
+    when
+        ComparisonOperatorEntity(names memberOf "ZhangSan")
+        ComparisonOperatorEntity(names memberOf list)
+    then
+        System.out.printf("comparison_operator_memberOf occur%n");
+end
+
+// matches
+rule "comparison_operator_matches"
+    when
+        ComparisonOperatorEntity(names matches "Wang.*")
+    then
+        System.out.printf("comparison_operator_matches occur%n");
+end

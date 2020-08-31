@@ -37,10 +37,39 @@ public class OrderTest {
 
         log.info("result: " + order);
 
+        kieSession.dispose();
+
         /*
         [main] INFO com.corning.drools.entity.OrderTest - source: Order(originalPrice=50.0, realPrice=null)
         bookDiscount_1, Order(originalPrice=50.0, realPrice=50.0)
         [main] INFO com.corning.drools.entity.OrderTest - result: Order(originalPrice=50.0, realPrice=50.0)
+        */
+    }
+
+    @Test
+    public void bookDiscount2() {
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
+        KieSession kieSession = kieClasspathContainer.newKieSession();
+
+        Order order = new Order();
+        order.setOriginalPrice(110D);
+
+        log.info("source : " + order);
+
+        kieSession.insert(order);
+
+        kieSession.fireAllRules();
+
+        log.info("result: " + order);
+
+        kieSession.dispose();
+
+        /*
+        [main] INFO com.corning.drools.entity.OrderTest - source : Order(originalPrice=110.0, realPrice=null)
+        bookDiscount_2, $op=110.0
+        bookDiscount_2, $order=Order(originalPrice=110.0, realPrice=90.0)
+        [main] INFO com.corning.drools.entity.OrderTest - result: Order(originalPrice=110.0, realPrice=90.0)
         */
     }
 
