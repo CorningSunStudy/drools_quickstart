@@ -48,3 +48,15 @@ rule "student.age==10"
         System.out.printf("student.age==10 occur%n");
 end
 
+// retract
+// 5
+rule "student.age==10 for delete"
+    // 优先级设置，越大越先执行
+    salience
+        10
+    when
+        $student:Student(age==10)
+    then
+        retract($student)
+        System.out.printf("student.age==10 for delete occur%n");
+end

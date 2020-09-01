@@ -63,10 +63,7 @@ public class StudentTest {
 
         /*
         [main] INFO com.corning.drools.entity.StudentTest - source : Student(id=1, name=ZhangSan, age=10)
-        student.age==10 occur
-        student.age<10 occur
-        student.age>10 and student.age<20 occur
-        student.age>20 occur
+        student.age==10 for delete occur
         [main] INFO com.corning.drools.entity.StudentTest - result: Student(id=1, name=ZhangSan, age=10)
          */
 
