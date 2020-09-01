@@ -52,11 +52,12 @@ end
 // 5
 rule "student.age==10 for delete"
     // 优先级设置，越大越先执行
-    salience
-        10
+    salience 10
+    enabled false
     when
         $student:Student(age==10)
     then
+        // 删除 fact 对象，后续规则不会再执行
         retract($student)
         System.out.printf("student.age==10 for delete occur%n");
 end
