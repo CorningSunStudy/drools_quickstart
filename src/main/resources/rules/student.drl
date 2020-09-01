@@ -5,6 +5,7 @@ dialect  "mvel"
 
 // Drools 内置方法测试
 
+// update
 // 1
 rule "student.age<10"
     when
@@ -35,4 +36,15 @@ rule "student.age>20"
         System.out.printf("student.age>20 occur%n");
 end
 
+// insert
+// 4
+rule "student.age==10"
+    when
+        Student(age==10)
+    then
+        Student newStudent = new Student();
+        newStudent.setAge(5);
+        insert(newStudent);
+        System.out.printf("student.age==10 occur%n");
+end
 

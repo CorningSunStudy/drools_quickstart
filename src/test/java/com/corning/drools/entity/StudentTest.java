@@ -10,7 +10,7 @@ import org.kie.api.runtime.KieSession;
 public class StudentTest {
 
     @Test
-    public void t1() {
+    public void testUpdate() {
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
         KieSession kieSession = kieClasspathContainer.newKieSession();
@@ -36,6 +36,38 @@ public class StudentTest {
         student.age>10 and student.age<20 occur
         student.age>20 occur
         [main] INFO com.corning.drools.entity.StudentTest - result: Student(id=1, name=ZhangSan, age=30)
+         */
+
+    }
+
+    @Test
+    public void testInsert() {
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
+        KieSession kieSession = kieClasspathContainer.newKieSession();
+
+        Student student = new Student();
+        student.setId(1);
+        student.setName("ZhangSan");
+        student.setAge(10);
+
+        log.info("source : " + student);
+
+        kieSession.insert(student);
+
+        kieSession.fireAllRules();
+
+        log.info("result: " + student);
+
+        kieSession.dispose();
+
+        /*
+        [main] INFO com.corning.drools.entity.StudentTest - source : Student(id=1, name=ZhangSan, age=10)
+        student.age==10 occur
+        student.age<10 occur
+        student.age>10 and student.age<20 occur
+        student.age>20 occur
+        [main] INFO com.corning.drools.entity.StudentTest - result: Student(id=1, name=ZhangSan, age=10)
          */
 
     }
