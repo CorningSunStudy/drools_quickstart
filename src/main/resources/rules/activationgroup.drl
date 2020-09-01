@@ -1,0 +1,19 @@
+package rules.activationGroup;
+dialect  "mvel"
+
+rule "activationGroup_1"
+    salience 5
+    activation-group "activationGroup"
+    when
+    then
+        System.out.println("activationGroup_1 occur");
+end
+
+
+rule "activationGroup_2"
+    salience 10
+    activation-group "activationGroup"
+    when
+    then
+        System.out.println("activationGroup_2 occur");
+end
