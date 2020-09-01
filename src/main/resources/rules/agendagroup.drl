@@ -3,6 +3,7 @@ dialect  "mvel"
 
 rule "agendaGroup_1"
     agenda-group "agendaGroup1"
+    auto-focus true // 不需要主动设置focus，同一个组只需要写一次
     when
     then
         System.out.println("agendaGroup_1 occur");
