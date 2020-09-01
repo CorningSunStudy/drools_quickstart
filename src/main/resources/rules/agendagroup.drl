@@ -1,0 +1,31 @@
+package rules.agendaGroup;
+dialect  "mvel"
+
+rule "agendaGroup_1"
+    agenda-group "agendaGroup1"
+    when
+    then
+        System.out.println("agendaGroup_1 occur");
+end
+
+rule "agendaGroup_2"
+    agenda-group "agendaGroup1"
+    when
+    then
+        System.out.println("agendaGroup_2 occur");
+end
+
+rule "agendaGroup_3"
+    agenda-group "agendaGroup2"
+    when
+        eval(false)
+    then
+        System.out.println("agendaGroup_3 occur");
+end
+
+rule "agendaGroup_4"
+    agenda-group "agendaGroup2"
+    when
+    then
+        System.out.println("agendaGroup_4 occur");
+end
