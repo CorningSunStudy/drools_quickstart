@@ -1,0 +1,38 @@
+package rules.student;
+import com.corning.drools.entity.Student;
+
+dialect  "mvel"
+
+// Drools 内置方法测试
+
+// 1
+rule "student.age<10"
+    when
+        $student:Student(age<10)
+    then
+        $student.setAge(15);
+        // 更新 fact 对象，重新匹配规则
+        update($student)
+        System.out.printf("student.age<10 occur%n");
+end
+
+// 2
+rule "student.age>10 and student.age<20"
+    when
+        $student:Student(age>10 && age<20)
+    then
+        $student.setAge(30);
+        update($student)
+        System.out.printf("student.age>10 and student.age<20 occur%n");
+end
+
+
+// 3
+rule "student.age>20"
+    when
+        Student(age>20)
+    then
+        System.out.printf("student.age>20 occur%n");
+end
+
+
