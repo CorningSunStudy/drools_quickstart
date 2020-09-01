@@ -3,13 +3,24 @@ import com.corning.drools.entity.Student;
 
 dialect  "mvel"
 
-
+// no-loop 无法解决多个规则间的死循环
 rule "noloop_student.age==50"
     no-loop true
     when
         $student:Student(age==50)
     then
+        $student.setAge(40);
         update($student)
         System.out.printf("noloop_student.age==50 occur%n");
+end
+
+rule "noloop_student.age==40"
+    no-loop true
+    when
+        $student:Student(age==40)
+    then
+        $student.setAge(50);
+        update($student)
+        System.out.printf("noloop_student.age==40 occur%n");
 end
 
