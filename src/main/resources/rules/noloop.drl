@@ -1,0 +1,15 @@
+package rules.noloop;
+import com.corning.drools.entity.Student;
+
+dialect  "mvel"
+
+
+rule "noloop_student.age==50"
+    no-loop true
+    when
+        $student:Student(age==50)
+    then
+        update($student)
+        System.out.printf("noloop_student.age==50 occur%n");
+end
+
