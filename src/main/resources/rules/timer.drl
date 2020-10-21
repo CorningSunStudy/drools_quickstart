@@ -1,0 +1,14 @@
+package rules.timer1;
+global org.slf4j.Logger log
+
+
+dialect  "mvel"
+
+
+// 1
+rule "rule_timer_1"
+    timer(5s 3s) // 5秒后启动，每隔3秒执行一次
+    when
+    then
+        log.info("rule_timer_1 occur");
+end
