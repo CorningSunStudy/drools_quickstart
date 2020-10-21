@@ -1,5 +1,6 @@
 package rules.timer1;
 global org.slf4j.Logger log
+import java.util.Date
 
 
 dialect  "mvel"
@@ -12,3 +13,13 @@ rule "rule_timer_1"
     then
         log.info("rule_timer_1 occur");
 end
+
+
+// 2
+rule "rule_timer_2"
+    timer(cron: 0/2 * * * * ?) // 每2秒执行一次
+    when
+    then
+        log.info("rule_timer_2 occur at {}", new Date());
+end
+
