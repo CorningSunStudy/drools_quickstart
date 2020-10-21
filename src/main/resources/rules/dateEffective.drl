@@ -1,0 +1,25 @@
+package rules.dateEffective;
+global org.slf4j.Logger log
+import java.util.Date
+
+
+dialect  "mvel"
+
+
+// 1
+rule "rule_dateEffective_1"
+    date-effective "2020-10-21 11:00:00" // 规则生效时间，格式可以自定义
+    when
+    then
+        log.info("{} - rule_dateEffective_1 occur ", new Date());
+end
+
+
+// 2
+rule "rule_dateEffective_2"
+    date-effective "2050-10-21 11:00:00" // 时间还没到，不会执行
+    when
+    then
+        log.info("{} - rule_dateEffective_2 occur", new Date());
+end
+
