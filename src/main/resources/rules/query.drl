@@ -1,0 +1,9 @@
+package rules.query1;
+dialect  "mvel"
+
+import com.corning.drools.entity.Student
+
+
+query "query_student_age_less_10"
+    $student:Student(age<10)
+end
