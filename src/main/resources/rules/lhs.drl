@@ -1,0 +1,21 @@
+package rules.lhs;
+dialect  "mvel"
+
+import com.corning.drools.entity.Student
+
+global org.slf4j.Logger log
+
+
+rule "rule_lhs_1"
+    when
+        $student:Student(age in (1, 3, 5))
+    then
+        log.info("rule_lhs_1 occur, $student={}", $student);
+end
+
+rule "rule_lhs_2"
+    when
+        $student:Student(age not in (1, 3, 5))
+    then
+        log.info("rule_lhs_2 occur, $student={}", $student);
+end
