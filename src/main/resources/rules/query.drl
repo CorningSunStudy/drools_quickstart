@@ -7,3 +7,9 @@ import com.corning.drools.entity.Student
 query "query_student_age_less_10"
     $student:Student(age<10)
 end
+
+
+query "query_student_by_name" (String sname)
+    $student:Student(name == sname)
+end
+
