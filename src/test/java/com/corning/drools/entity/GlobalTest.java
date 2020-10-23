@@ -1,5 +1,6 @@
 package com.corning.drools.entity;
 
+import com.corning.drools.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.drools.core.base.RuleNameStartsWithAgendaFilter;
 import org.junit.Test;
@@ -23,6 +24,9 @@ public class GlobalTest extends DroolsBaseTest {
 
         // 全局集合类型，rule中修改的值只在所有rule有效
         kieSession.setGlobal("gList", gList);
+
+        // 全局 JavaBean
+        kieSession.setGlobal("userService", new UserService());
 
         kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_global_"));
 
@@ -53,6 +57,23 @@ public class GlobalTest extends DroolsBaseTest {
         [main] INFO com.corning.drools.entity.GlobalTest - afterRule count=1
         [main] INFO com.corning.drools.entity.GlobalTest - afterRule gList.size=1
         [main] INFO com.corning.drools.entity.DroolsBaseTest - Fri Oct 23 14:35:46 CST 2020 - kieSession dispose
+         */
+
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Fri Oct 23 15:09:03 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.GlobalTest - beforeRule count=1
+        [main] INFO com.corning.drools.entity.GlobalTest - beforeRule gList.size=0
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Fri Oct 23 15:09:03 CST 2020 rule_global_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_global_1 count=11
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_global_1 gList.size=1
+        [main] INFO com.corning.drools.service.UserService - UserService.save(rule_global_1)
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Fri Oct 23 15:09:03 CST 2020 rule_global_2 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_global_2 count=1
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_global_2 gList.size=1
+        [main] INFO com.corning.drools.service.UserService - UserService.save(rule_global_2)
+        [main] INFO com.corning.drools.entity.GlobalTest - afterRule count=1
+        [main] INFO com.corning.drools.entity.GlobalTest - afterRule gList.size=1
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Fri Oct 23 15:09:03 CST 2020 - kieSession dispose
          */
     }
 

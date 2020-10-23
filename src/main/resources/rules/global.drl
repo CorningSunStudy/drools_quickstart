@@ -1,10 +1,12 @@
 package rules.global1;
 
+import java.util.Date
+import com.corning.drools.service.UserService
+
 global org.slf4j.Logger log
 global java.lang.Integer count
 global java.util.List gList
-
-import java.util.Date
+global UserService userService // 先 import 可以简化 global 定义
 
 dialect  "mvel"
 
@@ -20,6 +22,8 @@ rule "rule_global_1"
 
         gList.add("rule_global_1"); // 改变 gList 值
         log.info("rule_global_1 gList.size={}", gList.size());
+
+        userService.save("rule_global_1");
 end
 
 
@@ -30,5 +34,7 @@ rule "rule_global_2"
         log.info("{} rule_global_2 occur", new Date());
         log.info("rule_global_2 count={}", count);
         log.info("rule_global_2 gList.size={}", gList.size());
+
+        userService.save("rule_global_2");
 end
 
