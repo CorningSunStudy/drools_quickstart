@@ -18,6 +18,9 @@ public class DroolsBaseTest {
 
     @Before
     public void setUP() {
+        // 指定 date-effective 日期格式
+        System.setProperty("drools.dateformat", "yyyy-MM-dd HH:mm:ss");
+
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kieClasspathContainer = kieServices.getKieClasspathContainer();
         kieSession = kieClasspathContainer.newKieSession();

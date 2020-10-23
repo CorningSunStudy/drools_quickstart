@@ -1,0 +1,28 @@
+package rules.global1;
+
+global org.slf4j.Logger log
+global java.lang.Integer count
+
+import java.util.Date
+
+dialect  "mvel"
+
+
+// 1
+rule "rule_global_1"
+    when
+    then
+        log.info("{} rule_global_1 occur", new Date());
+        count += 10; // 改变 count 值
+        log.info("rule_global_1 count={}", count);
+end
+
+
+// 2
+rule "rule_global_2"
+    when
+    then
+        log.info("{} rule_global_2 occur", new Date());
+        log.info("rule_global_2 count={}", count);
+end
+

@@ -8,13 +8,6 @@ import org.junit.Test;
 @Slf4j
 public class DateExpiresTest extends DroolsBaseTest {
 
-    @Before
-    public void setUP() {
-        // 指定 date-effective 日期格式
-        System.setProperty("drools.dateformat", "yyyy-MM-dd HH:mm:ss");
-        super.setUP();
-    }
-
     @Test
     public void ruleDateEffective() {
 
