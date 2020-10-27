@@ -36,6 +36,28 @@ public class LhsTest extends DroolsBaseTest {
 
     }
 
+    @Test
+    public void lhsEval() {
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_lhs_eval_"));
+
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 15:59:34 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_eval_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 15:59:34 CST 2020 - kieSession dispose
+         */
+
+    }
+
+    @Test
+    public void lhsNot() {
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_lhs_not_"));
+
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 15:53:41 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 15:53:41 CST 2020 - kieSession dispose
+         */
+
+    }
 
 
 }

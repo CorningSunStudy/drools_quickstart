@@ -19,3 +19,19 @@ rule "rule_lhs_2"
     then
         log.info("rule_lhs_2 occur, $student={}", $student);
 end
+
+rule "rule_lhs_eval_1"
+    when
+        eval(true)
+    then
+        log.info("rule_lhs_eval_1 occur");
+end
+
+
+rule "rule_lhs_not_1"
+    when
+        // student age>0 = true, not 取反后为 false， 规则不会执行
+        not Student(age > 0)
+    then
+        log.info("rule_lhs_not_1 occur");
+end
