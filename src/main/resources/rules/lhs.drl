@@ -35,3 +35,21 @@ rule "rule_lhs_not_1"
     then
         log.info("rule_lhs_not_1 occur");
 end
+
+
+rule "rule_lhs_exist_1"
+    when
+        // 所有符合条件的 fact 都会执行
+        Student(age > 0)
+    then
+        log.info("rule_lhs_exist_1 occur");
+end
+
+rule "rule_lhs_exist_2"
+    when
+        // exists 修饰只执行一次
+        exists Student(age > 0)
+    then
+        log.info("rule_lhs_exist_2 occur");
+end
+

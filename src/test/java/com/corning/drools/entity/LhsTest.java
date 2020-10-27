@@ -60,4 +60,18 @@ public class LhsTest extends DroolsBaseTest {
     }
 
 
+    @Test
+    public void lhsExist() {
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_lhs_exist_"));
+
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 16:05:12 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_exist_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_exist_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_exist_2 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 16:05:12 CST 2020 - kieSession dispose
+         */
+
+    }
+
 }
