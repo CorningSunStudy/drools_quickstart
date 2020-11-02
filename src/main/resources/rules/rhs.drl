@@ -2,6 +2,7 @@ package rules.rhs;
 dialect  "mvel"
 
 import com.corning.drools.entity.Student
+import org.drools.core.WorkingMemory
 
 global org.slf4j.Logger log
 
@@ -17,5 +18,14 @@ rule "rule_rhs_halt_2"
     when
     then
         log.info("rule_rhs_halt_2 occur");
+end
+
+
+rule "rule_rhs_workingMemory_1"
+    when
+    then
+        log.info("rule_rhs_workingMemory_1 occur");
+        WorkingMemory workingMemory = drools.getWorkingMemory();
+        log.info("workingMemory={}", workingMemory);
 end
 
