@@ -53,3 +53,24 @@ rule "rule_lhs_exist_2"
         log.info("rule_lhs_exist_2 occur");
 end
 
+
+rule "rule_lhs_extends_1"
+    when
+        Student(age > 10)
+    then
+        log.info("rule_lhs_extends_1 occur");
+end
+
+rule "rule_lhs_extends_2" extends "rule_lhs_extends_1"
+    when
+        Student(age < 20)
+    then
+        log.info("rule_lhs_extends_2 occur");
+end
+
+rule "rule_lhs_extends_3"
+    when
+        Student(age > 10 && age < 20)
+    then
+        log.info("rule_lhs_extends_3 occur");
+end

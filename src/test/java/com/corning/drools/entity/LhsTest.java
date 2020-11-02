@@ -13,12 +13,12 @@ public class LhsTest extends DroolsBaseTest {
         super.setUP();
 
         final Student student1 = new Student();
-        student1.setAge(1);
+        student1.setAge(10);
         student1.setName("student1");
         kieSession.insert(student1);
 
         final Student student2 = new Student();
-        student2.setAge(2);
+        student2.setAge(20);
         student2.setName("student2");
         kieSession.insert(student2);
     }
@@ -59,7 +59,6 @@ public class LhsTest extends DroolsBaseTest {
 
     }
 
-
     @Test
     public void lhsExist() {
         kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_lhs_exist_"));
@@ -70,6 +69,21 @@ public class LhsTest extends DroolsBaseTest {
         [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_exist_1 occur
         [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_exist_2 occur
         [main] INFO com.corning.drools.entity.DroolsBaseTest - Tue Oct 27 16:05:12 CST 2020 - kieSession dispose
+         */
+
+    }
+
+
+    @Test
+    public void lhsExtends() {
+
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_lhs_extends_"));
+        // TODO rule_lhs_extends_2 继承的条件并没有生效
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Mon Nov 02 15:59:54 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_extends_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_lhs_extends_2 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Mon Nov 02 15:59:54 CST 2020 - kieSession dispose
          */
 
     }
