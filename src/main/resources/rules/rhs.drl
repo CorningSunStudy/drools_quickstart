@@ -29,3 +29,12 @@ rule "rule_rhs_workingMemory_1"
         log.info("workingMemory={}", workingMemory);
 end
 
+
+rule "rule_rhs_getRule_1"
+    when
+    then
+        log.info("rule_rhs_getRule_1 occur");
+        org.drools.core.definitions.rule.impl.RuleImpl rule = drools.getRule();
+        log.info("rule={}", rule);
+        log.info("id={}, autoFocus={}, dateExpires={}", rule.getId(), rule.getAutoFocus(), rule.getDateExpires());
+end

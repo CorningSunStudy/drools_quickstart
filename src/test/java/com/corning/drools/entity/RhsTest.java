@@ -34,5 +34,19 @@ public class RhsTest extends DroolsBaseTest {
 
     }
 
+    @Test
+    public void rhsGetRule() {
+        kieSession.fireAllRules(new RuleNameStartsWithAgendaFilter("rule_rhs_getRule_"));
+
+        /*
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Mon Nov 02 16:27:14 CST 2020 - kieSession init
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule_rhs_getRule_1 occur
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - rule=[Rule name=rule_rhs_getRule_1, agendaGroup=MAIN, salience=0, no-loop=false]
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - id=rule_rhs_getRule_1, autoFocus=false, dateExpires=null
+        [main] INFO com.corning.drools.entity.DroolsBaseTest - Mon Nov 02 16:27:14 CST 2020 - kieSession dispose
+         */
+
+    }
+
 
 }
