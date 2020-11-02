@@ -1,0 +1,21 @@
+package rules.rhs;
+dialect  "mvel"
+
+import com.corning.drools.entity.Student
+
+global org.slf4j.Logger log
+
+
+rule "rule_rhs_halt_1"
+    when
+    then
+        log.info("rule_rhs_halt_1 occur");
+        drools.halt(); // 终止后面所有规则执行
+end
+
+rule "rule_rhs_halt_2"
+    when
+    then
+        log.info("rule_rhs_halt_2 occur");
+end
+
