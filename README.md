@@ -16,3 +16,7 @@ https://github.com/corningsun/JavaInterview/blob/master/docs/Drools.md
 
 ![](docs/img/规则引擎构成.png)
 
+## Drools 规则文件模版修改
+
+![](docs/img/DroolsTemplateConfig.jpg)
+

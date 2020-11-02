@@ -1,5 +1,5 @@
 package rules.rhs;
-dialect  "mvel"
+dialect  "java"
 
 import com.corning.drools.entity.Student
 import org.drools.core.WorkingMemory
