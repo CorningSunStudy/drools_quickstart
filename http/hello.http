@@ -1,0 +1,3 @@
+### hello
+GET http://localhost:8080/hello/rule
+
