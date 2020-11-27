@@ -14,7 +14,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <drools.version>7.10.0.Final</drools.version>
-        <spring.version>5.0.5.RELEASE</spring.version>
+        <spring.version>5.3.1</spring.version>
     </properties>
 
     <!--注意：通过 dependencyManagement 指定版本，可以解决 jar 包冲突。相比较 exclusions 方式我更喜欢这个 -->
