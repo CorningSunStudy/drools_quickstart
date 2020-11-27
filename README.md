@@ -20,3 +20,11 @@ https://github.com/corningsun/JavaInterview/blob/master/docs/Drools.md
 
 ![](docs/img/DroolsTemplateConfig.jpg)
 
+## Idea 插件 maven-helper
+
+可以直观看到依赖的 jar 包有没有冲突
+
+插件地址： https://plugins.jetbrains.com/plugin/7179-maven-helper
+
+![](docs/img/idea-maven-helper-spring.png)
+

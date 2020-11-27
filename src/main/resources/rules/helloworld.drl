@@ -1,0 +1,10 @@
+package helloworld
+
+dialect  "java"
+
+rule "rule_helloworld"
+    when
+        eval(true)
+    then
+        System.out.println("规则：rule_helloworld 触发...");
+end
