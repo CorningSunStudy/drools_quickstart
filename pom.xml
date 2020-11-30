@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.corning.drools</groupId>
-    <artifactId>drools_springboot</artifactId>
+    <artifactId>drools_calculation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 

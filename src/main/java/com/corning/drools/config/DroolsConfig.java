@@ -35,6 +35,9 @@ public class DroolsConfig {
     @Bean
     @ConditionalOnMissingBean
     public KieFileSystem kieFileSystem() throws IOException {
+        // 指定日期格式
+        System.setProperty("drools.dateformat", "yyyy-MM-dd");
+
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
         Resource[] files = resourcePatternResolver.getResources("classpath*:" + RULES_PATH + "*.*");

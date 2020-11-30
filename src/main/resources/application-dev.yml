@@ -3,4 +3,4 @@ server:
 
 spring:
   application:
-    name: drools_springboot
+    name: drools_calculation
