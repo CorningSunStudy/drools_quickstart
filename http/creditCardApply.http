@@ -1,0 +1,238 @@
+### 如果申请人既没房也没车，同时学历为大专以下，并且月薪少于5000，那么不通过
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": false,
+  "education": "专科以下",
+  "monthlyIncome": 3000
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": "专科以下",
+#  "telephone": null,
+#  "monthlyIncome": 3000.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": false,
+#  "quota": 0.0
+#}
+
+
+### 如果申请人既没房也没车，同时学历为大专或本科，并且月薪少于3000，那么不通过
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": false,
+  "education": "本科",
+  "monthlyIncome": 2900
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": "本科",
+#  "telephone": null,
+#  "monthlyIncome": 2900.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": false,
+#  "quota": 0.0
+#}
+
+### 如果申请人既没房也没车，同时学历为本科以上，并且月薪少于2000，同时之前没有信用卡的，那么不通过
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": false,
+  "education": "本科以上",
+  "monthlyIncome": 1900,
+  "hasCreditCardCount": 0
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": "本科以上",
+#  "telephone": null,
+#  "monthlyIncome": 1900.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": false,
+#  "quota": 0.0
+#}
+
+### 如果申请人现有的信用卡数量大于10，那么不通过
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCreditCardCount": 11
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": null,
+#  "telephone": null,
+#  "monthlyIncome": 0.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 11,
+#  "checkResult": false,
+#  "quota": 0.0
+#}
+
+### 如果申请人有房有车，或者月收入在20000以上，那么发放的信用卡额度为15000
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": true,
+  "hasHouse": true,
+  "monthlyIncome": 3000
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": null,
+#  "telephone": null,
+#  "monthlyIncome": 3000.0,
+#  "address": null,
+#  "hasHouse": true,
+#  "hasCar": true,
+#  "hasCreditCardCount": 0,
+#  "checkResult": true,
+#  "quota": 15000.0
+#}
+
+### 如果申请人没房没车，但月收入在10000~20000之间，那么发放的信用卡额度为6000
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": false,
+  "monthlyIncome": 15000
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": null,
+#  "telephone": null,
+#  "monthlyIncome": 15000.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": true,
+#  "quota": 6000.0
+#}
+
+### 如果申请人没房没车，月收入在10000以下，那么发放的信用卡额度为3000
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": false,
+  "monthlyIncome": 9999
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": null,
+#  "telephone": null,
+#  "monthlyIncome": 9999.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": true,
+#  "quota": 3000.0
+#}
+
+### 如果申请人有房没车或者没房但有车，月收入在10000以下，那么发放的信用卡额度为5000
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": false,
+  "hasHouse": true,
+  "monthlyIncome": 9999
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": null,
+#  "telephone": null,
+#  "monthlyIncome": 9999.0,
+#  "address": null,
+#  "hasHouse": true,
+#  "hasCar": false,
+#  "hasCreditCardCount": 0,
+#  "checkResult": true,
+#  "quota": 5000.0
+#}
+
+### 如果申请人有房没车或者是没房但有车，月收入在10000~20000之间，那么发放的信用卡额度为8000
+POST http://localhost:8080/rule/creditCardApply
+Content-Type: application/json
+
+{
+  "hasCar": true,
+  "hasHouse": false,
+  "education": "专科以下",
+  "monthlyIncome": 15000
+}
+
+### response
+#{
+#  "name": null,
+#  "sex": null,
+#  "age": 0,
+#  "education": "专科以下",
+#  "telephone": null,
+#  "monthlyIncome": 15000.0,
+#  "address": null,
+#  "hasHouse": false,
+#  "hasCar": true,
+#  "hasCreditCardCount": 0,
+#  "checkResult": true,
+#  "quota": 8000.0
+#}
+

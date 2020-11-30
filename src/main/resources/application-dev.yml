@@ -3,4 +3,4 @@ server:
 
 spring:
   application:
-    name: drools_calculation
+    name: drools_creditCardApply

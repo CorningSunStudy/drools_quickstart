@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.corning.drools</groupId>
-    <artifactId>drools_calculation</artifactId>
+    <artifactId>drools_creditCardApply</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
