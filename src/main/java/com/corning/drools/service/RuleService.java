@@ -1,25 +1,28 @@
 package com.corning.drools.service;
 
-import com.corning.drools.entity.CreditCardApplyInfo;
-import org.kie.api.KieBase;
+import com.corning.drools.entity.InsuranceInfo;
+import com.corning.drools.utils.KieSessionUtils;
 import org.kie.api.runtime.KieSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RuleService {
 
-    @Autowired
-    private KieBase kieBase;
+    public List<String> insuranceInfoCheck(InsuranceInfo insuranceInfo) throws Exception {
+        String path = getClass().getResource("/").getPath() + "rules/insuranceInfoCheck.xls";
+        KieSession session = KieSessionUtils.getKieSessionFromXLS(path);
+        session.getAgenda().getAgendaGroup("sign").setFocus();
 
-    public CreditCardApplyInfo creditCardApply(CreditCardApplyInfo creditCardApplyInfo) {
-        KieSession kieSession = kieBase.newKieSession();
+        session.insert(insuranceInfo);
 
-        kieSession.insert(creditCardApplyInfo);
+        List<String> listRules = new ArrayList<>();
+        session.setGlobal("listRules", listRules);
 
-        kieSession.fireAllRules();
-        kieSession.dispose();
+        session.fireAllRules();
 
-        return creditCardApplyInfo;
+        return listRules;
     }
 }
